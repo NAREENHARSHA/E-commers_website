@@ -1,0 +1,51 @@
+const mongoose = require('mongoose');
+
+const orderItemSchema = new mongoose.Schema({
+  product:  { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+  name:     String,
+  price:    Number,
+  quantity: { type: Number, required: true, min: 1 },
+  image:    String,
+  category: String
+});
+
+const orderSchema = new mongoose.Schema({
+  orderId: { type: String, unique: true },
+  customer: {
+    name:    { type: String, required: true },
+    phone:   { type: String, required: true },
+    address: { type: String, required: true },
+    email:   { type: String, default: '' }
+  },
+  items:         [orderItemSchema],
+  totalAmount:   { type: Number, required: true },
+  paymentMethod: { type: String, enum: ['cod', 'upi', 'bank'], default: 'cod' },
+  status: {
+    type: String,
+    enum: ['new', 'confirmed', 'processing', 'ready', 'delivered', 'cancelled'],
+    default: 'new'
+  },
+  notes:          { type: String, default: '' },
+  discount:       { type: Number, default: 0 },
+  originalAmount: { type: Number, default: 0 },
+  discountReason: { type: String, default: '' },
+  discountedItem: { type: String, default: '' },
+  courierCharge:  { type: Number, default: 0 }
+}, { timestamps: true });
+
+orderSchema.pre('save', async function(next) {
+  if (!this.orderId) {
+    let unique = false, attempts = 0;
+    while (!unique && attempts < 20) {
+      const count = await mongoose.model('Order').countDocuments();
+      const candidate = 'ORD-' + String(count + 1001 + attempts).padStart(4, '0');
+      const existing  = await mongoose.model('Order').findOne({ orderId: candidate });
+      if (!existing) { this.orderId = candidate; unique = true; }
+      attempts++;
+    }
+    if (!unique) this.orderId = 'ORD-' + Date.now();
+  }
+  next();
+});
+
+module.exports = mongoose.model('Order', orderSchema);
