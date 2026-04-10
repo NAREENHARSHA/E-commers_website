@@ -4,7 +4,7 @@ A production-ready e-commerce web application built with **Node.js, Express, and
 
 ---
 
-## 🚀 Features
+##  Features
 
 ### Customer Portal
 - JWT-based authentication (register/login via phone or email)
@@ -44,7 +44,7 @@ A production-ready e-commerce web application built with **Node.js, Express, and
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 shopflow/
@@ -107,7 +107,7 @@ npm start
 
 ---
 
-## 🔌 API Reference
+##  API Reference
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -127,7 +127,7 @@ npm start
 
 ---
 
-## 💡 Key Implementation Details
+##  Key Implementation Details
 
 - **SPA without framework** — full frontend in vanilla JS, no React/Vue/Angular
 - **Dynamic categories** — categories auto-generated from product data
@@ -139,6 +139,6 @@ npm start
 
 ---
 
-## 📄 License
+##  License
 
 MIT License — free to use for learning and portfolio purposes.
