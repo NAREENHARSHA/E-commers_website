@@ -1,4 +1,4 @@
-# ShopFlow — Full-Stack E-Commerce Platform
+#  Full-Stack E-Commerce Platform
 
 A production-ready e-commerce web application built with **Node.js, Express, and MongoDB** — featuring a customer-facing shop SPA and a comprehensive admin dashboard with real-time analytics.
 
