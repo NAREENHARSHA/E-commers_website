@@ -30,7 +30,7 @@ A production-ready e-commerce web application built with **Node.js, Express, and
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -70,7 +70,7 @@ shopflow/
 
 ---
 
-## ⚙️ Setup & Installation
+##  Setup & Installation
 
 ### 1. Clone the repository
 ```bash
